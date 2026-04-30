@@ -148,6 +148,23 @@ Dhruv Rajput
 
 ---
 
+## 📡 API Examples
+
+### Login
+
+POST /api/auth/login
+
+Request:
+{
+  "email": "test@mail.com",
+  "password": "123456"
+}
+
+Response:
+{
+  "token": "jwt_token_here"
+}
+
 ## 📎 Notes
 
 * Ensure backend is running before frontend
