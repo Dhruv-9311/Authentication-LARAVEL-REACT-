@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 
 export default function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
+  const navigate = useNavigate();
+
+  // 🔒 Protect route
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/");
+    } else {
+      fetchTasks();
+    }
+  }, []);
 
   const fetchTasks = async () => {
     const res = await API.get("/tasks");
@@ -11,6 +23,7 @@ export default function Dashboard() {
   };
 
   const createTask = async () => {
+    if (!title) return;
     await API.post("/tasks", { title });
     setTitle("");
     fetchTasks();
@@ -21,15 +34,25 @@ export default function Dashboard() {
     fetchTasks();
   };
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+  // 🚪 Logout
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
     <div>
       <h2>Dashboard</h2>
 
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      <button onClick={logout}>Logout</button>
+
+      <br /><br />
+
+      <input
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Enter task"
+      />
       <button onClick={createTask}>Add Task</button>
 
       <ul>
