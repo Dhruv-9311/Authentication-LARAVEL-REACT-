@@ -142,12 +142,6 @@ Authorization: Bearer YOUR_TOKEN
 
 ---
 
-## 👨‍💻 Author
-
-Dhruv Rajput
-
----
-
 ## 📡 API Examples
 
 ### Login
@@ -164,6 +158,16 @@ Response:
 {
   "token": "jwt_token_here"
 }
+
+---
+
+## 👨‍💻 Author
+
+Dhruv Rajput
+
+---
+
+
 
 ## 📎 Notes
 
