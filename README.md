@@ -168,8 +168,7 @@ Response:
 ### 📊 Dashboard
 ![Dashboard](./screenshots/dashboard.png)
 
-### ➕ Task Creation
-![Task](./screenshots/task.png)
+---
 
 ## 👨‍💻 Author
 
