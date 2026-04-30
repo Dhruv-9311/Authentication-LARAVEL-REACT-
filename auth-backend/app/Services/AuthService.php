@@ -18,7 +18,7 @@ class AuthService
 
     public function login(array $credentials)
     {
-        if (!$token = auth()->attempt($credentials)) {
+        if (!$token = auth('api')->attempt($credentials)) {
             return null;
         }
 
